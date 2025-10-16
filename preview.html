@@ -11,24 +11,27 @@
             box-sizing: border-box;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F5F7FB;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            color: #1D1E20;
         }
 
         .phone-container {
             width: 375px;
             height: 812px;
-            background: #000;
-            border-radius: 40px;
-            padding: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(21, 32, 69, 0.15);
             transition: all 0.3s ease;
+            overflow: hidden;
         }
 
         /* Desktop/Tablet Responsive Design */
@@ -109,14 +112,15 @@
         .screen {
             width: 100%;
             height: 100%;
-            background: #fafafa;
-            border-radius: 32px;
+            background: #F5F7FB;
             overflow: hidden;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        .splash-screen {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .hero-screen {
+            background: linear-gradient(135deg, #152045 0%, #2979FF 100%);
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -127,6 +131,18 @@
             padding: 40px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .hero-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
 
         .splash-screen:hover {
@@ -134,34 +150,66 @@
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 60px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #FFD600 0%, #FFA726 100%);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 24px rgba(255, 214, 0, 0.3);
+            position: relative;
+            z-index: 2;
         }
 
         .logo::before {
-            content: "🏦";
-            font-size: 60px;
+            content: "RF";
+            font-size: 32px;
+            font-weight: 700;
+            color: #152045;
+            letter-spacing: 1px;
         }
 
-        .app-name {
-            font-size: 42px;
-            font-weight: bold;
+        .hero-headline {
+            font-size: 36px;
+            font-weight: 700;
             margin-bottom: 16px;
-            letter-spacing: 2px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
         }
 
-        .tagline {
+        .hero-subtext {
             font-size: 18px;
+            font-weight: 400;
             opacity: 0.9;
-            margin-bottom: 80px;
-            line-height: 24px;
+            margin-bottom: 48px;
+            line-height: 28px;
+            max-width: 280px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            background: #2979FF;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(41, 121, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button:hover {
+            background: #1E6BFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(41, 121, 255, 0.4);
         }
 
         .tap-indicator {
@@ -299,9 +347,10 @@
 
         .dashboard {
             display: none;
-            background: #fafafa;
+            background: #F5F7FB;
             height: 100%;
             overflow-y: auto;
+            padding-bottom: 80px;
         }
 
         .dashboard.show {
@@ -310,21 +359,25 @@
 
         .dashboard-header {
             background: white;
-            padding: 16px 24px;
+            padding: 20px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(21, 32, 69, 0.08);
+            border-bottom: 1px solid #E8ECF0;
         }
 
         .greeting {
             font-size: 16px;
-            opacity: 0.7;
+            color: #596377;
+            font-weight: 400;
         }
 
         .user-name {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 28px;
+            font-weight: 600;
+            color: #1D1E20;
+            margin-top: 4px;
         }
 
         .header-actions {
@@ -356,74 +409,190 @@
 
         .org-card {
             margin: 24px;
-            padding: 20px;
+            padding: 24px;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(21, 32, 69, 0.08);
+            border: 1px solid #E8ECF0;
         }
 
         .org-header {
             display: flex;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .org-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2979FF 0%, #1E6BFF 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
         }
 
         .org-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin-left: 12px;
+            font-size: 22px;
+            font-weight: 600;
+            margin-left: 16px;
+            color: #1D1E20;
         }
 
         .org-code {
             font-size: 14px;
-            opacity: 0.7;
+            color: #596377;
+            background: #F5F7FB;
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
         }
 
         .section {
             margin: 24px;
-            padding: 20px;
+            padding: 24px;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(21, 32, 69, 0.08);
+            border: 1px solid #E8ECF0;
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 16px;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1D1E20;
         }
 
         .budget-summary {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            gap: 16px;
         }
 
         .budget-item {
+            flex: 1;
             text-align: center;
+            padding: 16px;
+            background: #F5F7FB;
+            border-radius: 8px;
+            border: 1px solid #E8ECF0;
         }
 
         .budget-label {
-            font-size: 12px;
-            opacity: 0.7;
-            margin-bottom: 4px;
+            font-size: 14px;
+            color: #596377;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
 
         .budget-value {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1D1E20;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .status-approved {
+            background: #E8F5E8;
+            color: #00C853;
+        }
+
+        .status-pending {
+            background: #FFF3E0;
+            color: #FFD600;
+        }
+
+        .status-over {
+            background: #FFEBEE;
+            color: #DA1E28;
         }
 
         .chart-placeholder {
             height: 220px;
-            background: linear-gradient(45deg, #667eea20, #764ba220);
-            border-radius: 16px;
+            background: linear-gradient(135deg, #F5F7FB 0%, #E8ECF0 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #667eea;
+            color: #596377;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 500;
+            border: 2px dashed #E8ECF0;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 375px;
+            background: white;
+            border-top: 1px solid #E8ECF0;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 8px rgba(21, 32, 69, 0.08);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+
+        .nav-item:hover {
+            background: #F5F7FB;
+        }
+
+        .nav-item.active {
+            background: #E3F2FD;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+            color: #596377;
+        }
+
+        .nav-item.active .nav-icon {
+            color: #2979FF;
+        }
+
+        .nav-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #596377;
+        }
+
+        .nav-item.active .nav-label {
+            color: #2979FF;
+        }
+
+        @media (min-width: 768px) {
+            .bottom-nav {
+                width: 90vw;
+                max-width: 1200px;
+            }
         }
 
         .quick-actions {
@@ -534,15 +703,12 @@
 <body>
     <div class="phone-container">
         <div class="screen">
-            <!-- Splash Screen -->
-            <div class="splash-screen" id="splashScreen" onclick="showAuthSelection()">
+            <!-- Hero Screen -->
+            <div class="hero-screen" id="heroScreen" onclick="showDashboard()">
                 <div class="logo"></div>
-                <div class="app-name">Rapid Funds</div>
-                <div class="tagline">Streamline Your Funding Approvals</div>
-                <div class="tap-indicator">
-                    <span class="tap-text">Tap anywhere to continue</span>
-                    <span>👆</span>
-                </div>
+                <div class="hero-headline">Instant Capital, Intelligent Decisions.</div>
+                <div class="hero-subtext">Streamline your funding approvals with AI-powered insights and real-time analytics.</div>
+                <button class="cta-button">Get Started</button>
             </div>
 
             <!-- Auth Selection Screen -->
@@ -582,7 +748,7 @@
 
                 <div class="org-card">
                     <div class="org-header">
-                        <span>🏢</span>
+                        <div class="org-icon">TC</div>
                         <div class="org-name">Tech Corp</div>
                     </div>
                     <div class="org-code">Code: TECH2024</div>
@@ -594,14 +760,17 @@
                         <div class="budget-item">
                             <div class="budget-label">Total Budget</div>
                             <div class="budget-value">$1,000,000</div>
+                            <div class="status-badge status-approved">✓ On Track</div>
                         </div>
                         <div class="budget-item">
                             <div class="budget-label">Amount Spent</div>
-                            <div class="budget-value" style="color: #f44336;">$750,000</div>
+                            <div class="budget-value">$750,000</div>
+                            <div class="status-badge status-over">⚠ Over 75%</div>
                         </div>
                         <div class="budget-item">
                             <div class="budget-label">Remaining</div>
-                            <div class="budget-value" style="color: #667eea;">$250,000</div>
+                            <div class="budget-value">$250,000</div>
+                            <div class="status-badge status-pending">⏳ Monitoring</div>
                         </div>
                     </div>
                     <div class="chart-placeholder">
@@ -650,46 +819,104 @@
                 </div>
 
                 <div class="logout-container">
-                    <button class="logout-button" onclick="showSplash()">Logout</button>
+                    <button class="logout-button" onclick="showHero()">Logout</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="navigation">
-        <button class="nav-button" onclick="showSplash()">🏠</button>
-        <button class="nav-button" onclick="showAuthSelection()">🔐</button>
-        <button class="nav-button active" onclick="showDashboard()">📱</button>
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="showDashboard()">
+            <div class="nav-icon">📊</div>
+            <div class="nav-label">Dashboard</div>
+        </div>
+        <div class="nav-item" onclick="showOrgChart()">
+            <div class="nav-icon">🌳</div>
+            <div class="nav-label">Org Chart</div>
+        </div>
+        <div class="nav-item" onclick="showQueries()">
+            <div class="nav-icon">❓</div>
+            <div class="nav-label">Queries</div>
+        </div>
+        <div class="nav-item" onclick="showInbox()">
+            <div class="nav-icon">📬</div>
+            <div class="nav-label">Inbox</div>
+        </div>
+        <div class="nav-item" onclick="showSettings()">
+            <div class="nav-icon">⚙️</div>
+            <div class="nav-label">Settings</div>
+        </div>
     </div>
 
     <script>
-        function showSplash() {
-            document.getElementById('splashScreen').style.display = 'flex';
+        function showHero() {
+            document.getElementById('heroScreen').style.display = 'flex';
             document.getElementById('authSelection').classList.remove('show');
             document.getElementById('dashboard').classList.remove('show');
+            updateNavActive('hero');
         }
 
         function showAuthSelection() {
-            document.getElementById('splashScreen').style.display = 'none';
+            document.getElementById('heroScreen').style.display = 'none';
             document.getElementById('authSelection').classList.add('show');
             document.getElementById('dashboard').classList.remove('show');
+            updateNavActive('auth');
         }
 
         function showDashboard() {
-            document.getElementById('splashScreen').style.display = 'none';
+            document.getElementById('heroScreen').style.display = 'none';
             document.getElementById('authSelection').classList.remove('show');
             document.getElementById('dashboard').classList.add('show');
+            updateNavActive('dashboard');
+        }
+
+        function showOrgChart() {
+            showDashboard(); // For demo purposes
+            updateNavActive('orgchart');
+        }
+
+        function showQueries() {
+            showDashboard(); // For demo purposes
+            updateNavActive('queries');
+        }
+
+        function showInbox() {
+            showDashboard(); // For demo purposes
+            updateNavActive('inbox');
+        }
+
+        function showSettings() {
+            showDashboard(); // For demo purposes
+            updateNavActive('settings');
+        }
+
+        function updateNavActive(activeTab) {
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active class to clicked item
+            const navItems = {
+                'hero': null,
+                'auth': null,
+                'dashboard': document.querySelector('.nav-item:nth-child(1)'),
+                'orgchart': document.querySelector('.nav-item:nth-child(2)'),
+                'queries': document.querySelector('.nav-item:nth-child(3)'),
+                'inbox': document.querySelector('.nav-item:nth-child(4)'),
+                'settings': document.querySelector('.nav-item:nth-child(5)')
+            };
+
+            if (navItems[activeTab]) {
+                navItems[activeTab].classList.add('active');
+            }
         }
 
         // Auto-advance demo
         setTimeout(() => {
-            showAuthSelection();
-        }, 3000);
-
-        setTimeout(() => {
             showDashboard();
-        }, 6000);
+        }, 3000);
     </script>
 </body>
 </html>
