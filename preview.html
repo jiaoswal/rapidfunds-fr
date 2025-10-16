@@ -349,41 +349,43 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #FFD600 0%, #FFA726 100%);
-            color: #152045;
-            border: none;
-            padding: 20px 48px;
-            border-radius: 16px;
-            font-size: 20px;
-            font-weight: 700;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 12px 32px rgba(255, 214, 0, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: none;
+            letter-spacing: 1px;
             position: relative;
             z-index: 2;
-            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .cta-button:hover::before {
-            left: 100%;
+            opacity: 1;
         }
 
         .cta-button:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 16px 40px rgba(255, 214, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
         }
 
         .tap-indicator {
@@ -1517,7 +1519,6 @@
                 <div class="logo-text">Rapid Funds</div>
             </div>
             <div class="splash-content">
-                <h1 class="splash-headline">Instant Capital, Intelligent Decisions</h1>
                 <p class="splash-subtitle">Streamline your funding approvals with AI-powered insights</p>
                 <button class="cta-button" onclick="showEntryOptions()">Tap Anywhere to Begin</button>
             </div>
