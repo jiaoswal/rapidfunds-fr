@@ -753,6 +753,309 @@
             color: #2979FF;
         }
 
+        /* Entry Flow Styles */
+        .entry-container {
+            min-height: 100vh;
+            background: #F8FAFC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .splash-screen {
+            text-align: center;
+            max-width: 500px;
+            padding: 40px;
+        }
+
+        .splash-content {
+            margin-top: 40px;
+        }
+
+        .splash-headline {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .splash-subtitle {
+            font-size: 18px;
+            color: #64748B;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .entry-options {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .entry-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #64748B;
+            cursor: pointer;
+            padding: 8px;
+            margin-right: 16px;
+        }
+
+        .entry-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        .entry-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .entry-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .entry-card:hover {
+            border-color: #2979FF;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(41, 121, 255, 0.15);
+        }
+
+        .entry-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .entry-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 8px;
+        }
+
+        .entry-card p {
+            color: #64748B;
+            font-size: 14px;
+        }
+
+        .form-screen {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .form-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        .form-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .input-group input,
+        .input-group select {
+            padding: 12px 16px;
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #2979FF;
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-upload span {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #F8FAFC;
+            border: 2px dashed #E2E8F0;
+            border-radius: 8px;
+            color: #64748B;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .file-upload:hover span {
+            border-color: #2979FF;
+            color: #2979FF;
+        }
+
+        .submit-btn, .next-btn {
+            background: #2979FF;
+            color: white;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .submit-btn:hover, .next-btn:hover {
+            background: #1E6BFF;
+        }
+
+        /* Onboarding Wizard */
+        .onboarding-screen {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .wizard-header {
+            margin-bottom: 32px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #E2E8F0;
+            border-radius: 2px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #2979FF;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+            width: 50%;
+        }
+
+        .wizard-content {
+            min-height: 400px;
+        }
+
+        .department-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .department-item {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .department-item input {
+            flex: 1;
+        }
+
+        .remove-btn {
+            background: #DC2626;
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .add-dept-btn {
+            background: #F8FAFC;
+            border: 2px dashed #E2E8F0;
+            color: #64748B;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .add-dept-btn:hover {
+            border-color: #2979FF;
+            color: #2979FF;
+        }
+
+        .level-config {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .level-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .level-item span {
+            min-width: 120px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .level-item input {
+            flex: 1;
+        }
+
         .quick-actions {
             display: flex;
             flex-wrap: wrap;
@@ -859,8 +1162,173 @@
     </style>
 </head>
 <body>
-    <!-- Desktop Layout -->
-    <div class="app-container">
+    <!-- Entry Flow -->
+    <div id="entry-flow" class="entry-container">
+        <!-- Splash Screen -->
+        <div id="splash-screen" class="splash-screen">
+            <div class="logo-section">
+                <div class="logo"></div>
+                <div class="logo-text">Rapid Funds</div>
+            </div>
+            <div class="splash-content">
+                <h1 class="splash-headline">Instant Capital, Intelligent Decisions</h1>
+                <p class="splash-subtitle">Streamline your funding approvals with AI-powered insights</p>
+                <button class="cta-button" onclick="showEntryOptions()">Tap Anywhere to Begin</button>
+            </div>
+        </div>
+
+        <!-- Entry Options -->
+        <div id="entry-options" class="entry-options" style="display: none;">
+            <div class="entry-header">
+                <button class="back-btn" onclick="showSplash()">←</button>
+                <h2>Get Started</h2>
+            </div>
+            <div class="entry-cards">
+                <div class="entry-card" onclick="showNewOrgForm()">
+                    <div class="entry-icon">🏢</div>
+                    <h3>Create New Organization</h3>
+                    <p>Start fresh as Admin/CEO/Founder</p>
+                </div>
+                <div class="entry-card" onclick="showJoinOrgForm()">
+                    <div class="entry-icon">🔗</div>
+                    <h3>Join Existing Organization</h3>
+                    <p>Enter invite code to join as member</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Organization Form -->
+        <div id="new-org-form" class="form-screen" style="display: none;">
+            <div class="form-header">
+                <button class="back-btn" onclick="showEntryOptions()">←</button>
+                <h2>Create Organization</h2>
+            </div>
+            <div class="form-content">
+                <div class="input-group">
+                    <label>Organization Name</label>
+                    <input type="text" placeholder="Enter organization name">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create password">
+                </div>
+                <div class="input-group">
+                    <label>Logo (Optional)</label>
+                    <div class="file-upload">
+                        <input type="file" accept="image/*">
+                        <span>Upload Logo</span>
+                    </div>
+                </div>
+                <button class="submit-btn" onclick="startOnboarding('admin')">Create Organization</button>
+            </div>
+        </div>
+
+        <!-- Join Organization Form -->
+        <div id="join-org-form" class="form-screen" style="display: none;">
+            <div class="form-header">
+                <button class="back-btn" onclick="showEntryOptions()">←</button>
+                <h2>Join Organization</h2>
+            </div>
+            <div class="form-content">
+                <div class="input-group">
+                    <label>Invite Code</label>
+                    <input type="text" placeholder="Enter organization invite code">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create password">
+                </div>
+                <button class="submit-btn" onclick="startOnboarding('member')">Join Organization</button>
+            </div>
+        </div>
+
+        <!-- Onboarding Wizard -->
+        <div id="onboarding-wizard" class="onboarding-screen" style="display: none;">
+            <div class="wizard-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="onboarding-progress"></div>
+                </div>
+                <h2 id="wizard-title">Setup Your Profile</h2>
+            </div>
+            <div class="wizard-content" id="wizard-content">
+                <!-- Profile Setup -->
+                <div id="profile-setup" class="wizard-step">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name">
+                    </div>
+                    <div class="input-group">
+                        <label>Department</label>
+                        <select>
+                            <option>Select Department</option>
+                            <option>Engineering</option>
+                            <option>Marketing</option>
+                            <option>Sales</option>
+                            <option>Finance</option>
+                            <option>HR</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Designation</label>
+                        <input type="text" placeholder="Your job title">
+                    </div>
+                    <div class="input-group">
+                        <label>Daily Digest Time</label>
+                        <input type="time" value="09:00">
+                    </div>
+                    <button class="next-btn" onclick="nextWizardStep()">Continue</button>
+                </div>
+
+                <!-- Admin Setup -->
+                <div id="admin-setup" class="wizard-step" style="display: none;">
+                    <h3>Organization Setup</h3>
+                    <div class="input-group">
+                        <label>Create Departments</label>
+                        <div class="department-list">
+                            <div class="department-item">
+                                <input type="text" placeholder="Department name" value="Engineering">
+                                <button class="remove-btn">×</button>
+                            </div>
+                            <div class="department-item">
+                                <input type="text" placeholder="Department name" value="Marketing">
+                                <button class="remove-btn">×</button>
+                            </div>
+                        </div>
+                        <button class="add-dept-btn" onclick="addDepartment()">+ Add Department</button>
+                    </div>
+                    <div class="input-group">
+                        <label>Approval Levels</label>
+                        <div class="level-config">
+                            <div class="level-item">
+                                <span>L1 (≤ ₹50K)</span>
+                                <input type="text" placeholder="Department Head">
+                            </div>
+                            <div class="level-item">
+                                <span>L2 (₹50K-₹5L)</span>
+                                <input type="text" placeholder="Finance Manager">
+                            </div>
+                            <div class="level-item">
+                                <span>L3 (> ₹5L)</span>
+                                <input type="text" placeholder="CEO/Admin">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="next-btn" onclick="completeOnboarding()">Complete Setup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App (Hidden Initially) -->
+    <div id="main-app" class="app-container" style="display: none;">
         <!-- Main Content -->
         <div class="main-content">
             <!-- Dashboard Page -->
@@ -1170,7 +1638,75 @@
     </div>
 
     <script>
-        // Desktop navigation
+        // Entry Flow Functions
+        function showEntryOptions() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('entry-options').style.display = 'block';
+        }
+
+        function showSplash() {
+            document.getElementById('splash-screen').style.display = 'block';
+            document.getElementById('entry-options').style.display = 'none';
+            document.getElementById('new-org-form').style.display = 'none';
+            document.getElementById('join-org-form').style.display = 'none';
+        }
+
+        function showNewOrgForm() {
+            document.getElementById('entry-options').style.display = 'none';
+            document.getElementById('new-org-form').style.display = 'block';
+        }
+
+        function showJoinOrgForm() {
+            document.getElementById('entry-options').style.display = 'none';
+            document.getElementById('join-org-form').style.display = 'block';
+        }
+
+        function startOnboarding(role) {
+            document.getElementById('new-org-form').style.display = 'none';
+            document.getElementById('join-org-form').style.display = 'none';
+            document.getElementById('onboarding-wizard').style.display = 'block';
+            
+            // Update progress and title based on role
+            const progress = document.getElementById('onboarding-progress');
+            const title = document.getElementById('wizard-title');
+            
+            if (role === 'admin') {
+                progress.style.width = '33%';
+                title.textContent = 'Setup Your Profile';
+            } else {
+                progress.style.width = '100%';
+                title.textContent = 'Complete Your Profile';
+            }
+        }
+
+        function nextWizardStep() {
+            document.getElementById('profile-setup').style.display = 'none';
+            document.getElementById('admin-setup').style.display = 'block';
+            document.getElementById('onboarding-progress').style.width = '66%';
+            document.getElementById('wizard-title').textContent = 'Organization Setup';
+        }
+
+        function addDepartment() {
+            const departmentList = document.querySelector('.department-list');
+            const newDept = document.createElement('div');
+            newDept.className = 'department-item';
+            newDept.innerHTML = `
+                <input type="text" placeholder="Department name">
+                <button class="remove-btn" onclick="removeDepartment(this)">×</button>
+            `;
+            departmentList.appendChild(newDept);
+        }
+
+        function removeDepartment(btn) {
+            btn.parentElement.remove();
+        }
+
+        function completeOnboarding() {
+            document.getElementById('entry-flow').style.display = 'none';
+            document.getElementById('main-app').style.display = 'flex';
+        }
+
+        // Main App Navigation
         function showPage(page) {
             // Hide all pages
             document.querySelectorAll('.page').forEach(p => {
