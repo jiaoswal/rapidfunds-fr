@@ -36,7 +36,7 @@ const AuthSelectionScreen: React.FC = () => {
             >
               <Icon name="arrow-back" size={24} color="#FFFFFF" />
             </TouchableOpacity>
-            <Text style={styles.title}>Welcome to Rapid Funds</Text>
+            <Text style={styles.title}>Welcome to FundFlow</Text>
           </View>
 
           {/* Content */}
@@ -49,7 +49,7 @@ const AuthSelectionScreen: React.FC = () => {
 
             <Text style={styles.subtitle}>Choose your action</Text>
             <Text style={styles.description}>
-              Sign in to your account or join an existing organization
+              Sign in or join an existing organization
             </Text>
 
             {/* Buttons */}

@@ -35,10 +35,10 @@ const SplashScreen: React.FC = () => {
             </View>
 
             {/* App Name */}
-            <Text style={styles.appName}>Rapid Funds</Text>
+            <Text style={styles.appName}>FundFlow</Text>
 
             {/* Tagline */}
-            <Text style={styles.tagline}>Streamline Your Funding Approvals</Text>
+            <Text style={styles.tagline}>AI-powered funding and org management</Text>
 
             {/* Tap anywhere indicator */}
             <View style={styles.tapIndicator}>

@@ -32,6 +32,10 @@ const DashboardScreen: React.FC = () => {
     navigation.navigate('Profile' as never);
   };
 
+  const handleSettings = () => {
+    navigation.navigate('Settings' as never);
+  };
+
   const handleBudgetOverview = () => {
     navigation.navigate('BudgetOverview' as never);
   };
@@ -91,6 +95,9 @@ const DashboardScreen: React.FC = () => {
               <View style={styles.notificationBadge}>
                 <Text style={styles.notificationCount}>3</Text>
               </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.headerButton} onPress={handleSettings}>
+              <Icon name="settings" size={24} color={theme.colors.onSurface} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.headerButton} onPress={handleProfile}>
               <Icon name="account-circle" size={24} color={theme.colors.onSurface} />

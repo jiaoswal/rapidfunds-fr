@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useAuth } from '@/context/AuthContext';
+import TabNavigator from '@/navigation/TabNavigator';
 
 // Screens
 import SplashScreen from '@/screens/SplashScreen';
@@ -14,6 +15,7 @@ import OrgChartScreen from '@/screens/OrgChartScreen';
 import NotificationsScreen from '@/screens/NotificationsScreen';
 import ProfileScreen from '@/screens/ProfileScreen';
 import BudgetOverviewScreen from '@/screens/BudgetOverviewScreen';
+import SettingsScreen from '@/screens/SettingsScreen';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -21,11 +23,11 @@ export type RootStackParamList = {
   Login: undefined;
   JoinOrganization: undefined;
   CreateOrganization: undefined;
-  Dashboard: undefined;
-  OrgChart: undefined;
+  MainTabs: undefined;
   Notifications: undefined;
   Profile: undefined;
   BudgetOverview: undefined;
+  Settings: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -41,7 +43,7 @@ const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={isAuthenticated ? 'Dashboard' : 'Splash'}
+        initialRouteName={isAuthenticated ? 'MainTabs' : 'Splash'}
         screenOptions={{
           headerShown: false,
           cardStyle: { backgroundColor: '#FFFFFF' },
@@ -59,11 +61,12 @@ const AppNavigator: React.FC = () => {
         ) : (
           // Main App Stack
           <>
-            <Stack.Screen name="Dashboard" component={DashboardScreen} />
-            <Stack.Screen name="OrgChart" component={OrgChartScreen} />
+            <Stack.Screen name="MainTabs" component={TabNavigator} />
+            {/* Stack-only screens accessible from tabs */}
             <Stack.Screen name="Notifications" component={NotificationsScreen} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="BudgetOverview" component={BudgetOverviewScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
           </>
         )}
       </Stack.Navigator>
