@@ -27,9 +27,11 @@ A modern, mobile-friendly React Native application for streamlining corporate fu
 - **Role-based Access** - Different permissions for admins and members
 - **Approval Workflows** - Streamlined funding request processes
 
-### 📱 Mobile-First Design
-- **Responsive UI** - Optimized for mobile devices
+### 📱 Responsive Design (Mobile-First)
+- **Mobile-First Approach** - Optimized for smartphones with desktop scaling
+- **Cross-Platform** - Works seamlessly on phones, tablets, and desktops
 - **Touch-friendly** - Intuitive gestures and interactions
+- **Adaptive Layouts** - Grid-based responsive design
 - **Modern Design** - Clean, professional interface
 - **Accessibility** - Screen reader support and high contrast
 
@@ -106,6 +108,30 @@ src/
 └── utils/             # Utility functions and constants
     └── theme.ts
 ```
+
+## Design Philosophy
+
+### 📱 Mobile-First vs Desktop-Friendly
+
+**Why Mobile-First?**
+- **Real-world usage**: Managers approve requests while traveling, in meetings, or away from desk
+- **Instant access**: Everyone has smartphones, not everyone has laptops
+- **Push notifications**: Mobile apps provide real-time alerts
+- **Modern workflow**: Remote/hybrid work requires mobile accessibility
+- **Faster adoption**: Touch interfaces are more intuitive for most users
+
+**Desktop Enhancement:**
+- **Responsive design**: Scales beautifully to larger screens
+- **Grid layouts**: Multi-column views on tablets and desktops
+- **Keyboard shortcuts**: Power-user features for desktop users
+- **Mouse interactions**: Hover states and precise clicking
+- **Larger data views**: More information visible at once
+
+**Best of Both Worlds:**
+- Start with mobile for maximum accessibility
+- Enhance for desktop with responsive layouts
+- Single codebase for all devices
+- Consistent user experience across platforms
 
 ## Key Features Explained
 
