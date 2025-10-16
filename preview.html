@@ -78,15 +78,21 @@
         .logo {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #FFD600 0%, #FFA726 100%);
+            background: #2979FF;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 16px;
-            font-size: 24px;
-            font-weight: 700;
-            color: #152045;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            width: 32px;
+            height: 32px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>') no-repeat center;
+            background-size: contain;
         }
 
         .logo-text {
@@ -293,23 +299,23 @@
         .logo {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #FFD600 0%, #FFA726 100%);
+            background: #2979FF;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 40px;
-            box-shadow: 0 8px 24px rgba(255, 214, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(41, 121, 255, 0.3);
             position: relative;
             z-index: 2;
         }
 
         .logo::before {
-            content: "RF";
-            font-size: 32px;
-            font-weight: 700;
-            color: #152045;
-            letter-spacing: 1px;
+            content: '';
+            width: 48px;
+            height: 48px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>') no-repeat center;
+            background-size: contain;
         }
 
         .hero-headline {
@@ -855,31 +861,31 @@
                 <ul class="nav-menu">
                     <li class="nav-item">
                         <a href="#" class="nav-link active" onclick="showPage('dashboard')">
-                            <div class="nav-icon">📊</div>
+                            <div class="nav-icon"></div>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" onclick="showPage('orgchart')">
-                            <div class="nav-icon">🏢</div>
+                            <div class="nav-icon"></div>
                             Org Chart
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" onclick="showPage('queries')">
-                            <div class="nav-icon">🔍</div>
+                            <div class="nav-icon"></div>
                             Queries
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" onclick="showPage('inbox')">
-                            <div class="nav-icon">📬</div>
+                            <div class="nav-icon"></div>
                             Inbox
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" onclick="showPage('settings')">
-                            <div class="nav-icon">⚙️</div>
+                            <div class="nav-icon"></div>
                             Settings
                         </a>
                     </li>
@@ -1090,23 +1096,23 @@
     <!-- Bottom Navigation -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="showDashboard()">
-            <div class="nav-icon">📊</div>
+            <div class="nav-icon"></div>
             <div class="nav-label">Dashboard</div>
         </div>
         <div class="nav-item" onclick="showOrgChart()">
-            <div class="nav-icon">🌳</div>
+            <div class="nav-icon"></div>
             <div class="nav-label">Org Chart</div>
         </div>
         <div class="nav-item" onclick="showQueries()">
-            <div class="nav-icon">❓</div>
+            <div class="nav-icon"></div>
             <div class="nav-label">Queries</div>
         </div>
         <div class="nav-item" onclick="showInbox()">
-            <div class="nav-icon">📬</div>
+            <div class="nav-icon"></div>
             <div class="nav-label">Inbox</div>
         </div>
         <div class="nav-item" onclick="showSettings()">
-            <div class="nav-icon">⚙️</div>
+            <div class="nav-icon"></div>
             <div class="nav-label">Settings</div>
         </div>
     </div>
