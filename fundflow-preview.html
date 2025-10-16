@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FundFlow – 17-screen Tailwind React Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body class="bg-[#f7f8fc]">
+  <div id="root"></div>
+
+  <script>
+    const { useState } = React;
+
+    function TopNav({ title }) {
+      return (
+        React.createElement('div', { className: 'w-full flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-white' },
+          React.createElement('div', { className: 'text-lg font-semibold text-gray-800' }, title),
+          React.createElement('div', { className: 'text-sm text-gray-500' }, 'Rapid Funds · FundFlow')
+        )
+      );
+    }
+
+    function BottomTabs({ active, setActive }) {
+      const tabs = ['Directory', 'Org Chart', 'Queries', 'Inbox', 'Dashboard', 'Settings'];
+      return (
+        React.createElement('div', { className: 'fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 bg-white shadow-xl rounded-3xl px-4 py-2' },
+          tabs.map((t) => (
+            React.createElement('button', {
+              key: t,
+              onClick: () => setActive(t),
+              className: `px-3 py-1 rounded-full text-sm ${active === t ? 'bg-gradient-to-r from-indigo-500 to-violet-500 text-white' : 'text-gray-600'}`
+            }, t)
+          ))
+        )
+      );
+    }
+
+    function Card({ children, className = '' }) {
+      return React.createElement('div', { className: `bg-white rounded-2xl shadow-sm border border-gray-100 p-4 ${className}` }, children);
+    }
+
+    function ScreenDashboardCompact() {
+      return (
+        React.createElement('div', { className: 'p-6 space-y-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'flex justify-between items-center' },
+              React.createElement('div', null,
+                React.createElement('div', { className: 'text-sm text-gray-500' }, 'Budget Overview'),
+                React.createElement('div', { className: 'mt-2 grid grid-cols-4 gap-3' },
+                  React.createElement('div', { className: 'p-3 rounded-lg bg-blue-50 text-blue-700' }, 'BUDGET', React.createElement('br'), React.createElement('strong', null, '₹0k')),
+                  React.createElement('div', { className: 'p-3 rounded-lg bg-green-50 text-green-700' }, 'SPENT', React.createElement('br'), React.createElement('strong', null, '₹0k')),
+                  React.createElement('div', { className: 'p-3 rounded-lg bg-yellow-50 text-yellow-700' }, 'PENDING', React.createElement('br'), React.createElement('strong', null, '₹0k')),
+                  React.createElement('div', { className: 'p-3 rounded-lg bg-red-50 text-red-700' }, 'LEFT', React.createElement('br'), React.createElement('strong', null, '₹0k'))
+                )
+              ),
+              React.createElement('div', { className: 'text-sm text-gray-400' }, 'This Month · All Depts')
+            )
+          ),
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'text-sm text-gray-500 mb-2' }, 'Dept Budget'),
+            React.createElement('div', { className: 'h-36 bg-gradient-to-br from-white to-gray-50 rounded-lg border border-dashed border-gray-100 flex items-center justify-center text-gray-300' }, 'Chart placeholder')
+          )
+        )
+      );
+    }
+
+    function ScreenSettingsProfile() {
+      return (
+        React.createElement('div', { className: 'p-6 space-y-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'flex items-center gap-4' },
+              React.createElement('div', { className: 'h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center text-xl text-gray-500' }, 'H'),
+              React.createElement('div', null,
+                React.createElement('div', { className: 'font-semibold' }, 'ha'),
+                React.createElement('div', { className: 'text-sm text-gray-500' }, 'ha@gmail.com'),
+                React.createElement('div', { className: 'text-xs text-gray-400 mt-1' }, 'Department · Executive Office'),
+                React.createElement('div', { className: 'text-xs text-gray-400' }, 'Role: Admin')
+              )
+            )
+          ),
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'text-sm text-gray-600' }, 'Notification Preferences'),
+            React.createElement('div', { className: 'mt-3 flex items-center gap-2' },
+              React.createElement('label', { className: 'text-xs text-gray-500' }, 'Daily Digest Time'),
+              React.createElement('select', { className: 'ml-auto bg-gray-50 rounded-lg px-3 py-2 border border-gray-100' },
+                React.createElement('option', null, '9:00 AM')
+              )
+            ),
+            React.createElement('div', { className: 'mt-4' },
+              React.createElement('button', { className: 'px-4 py-2 rounded-lg bg-black text-white' }, 'Save Preferences')
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenSettingsOrgAdmin() {
+      return (
+        React.createElement('div', { className: 'p-6 space-y-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'flex items-center justify-between' },
+              React.createElement('div', null,
+                React.createElement('div', { className: 'font-semibold' }, 'haaa'),
+                React.createElement('div', { className: 'text-xs text-gray-500' }, '1 member')
+              ),
+              React.createElement('button', { className: 'px-3 py-1 rounded-lg bg-black text-white' }, 'Generate Invite Code')
+            )
+          ),
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'text-sm text-gray-600 mb-2' }, 'User Management'),
+            React.createElement('div', { className: 'bg-gray-50 p-3 rounded-lg' }, 'ha · ha@gmail.com · Executive Office · Administrator')
+          ),
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'flex items-center justify-between' },
+              React.createElement('div', null,
+                React.createElement('div', { className: 'text-sm font-medium' }, 'Funding Request Criteria'),
+                React.createElement('div', { className: 'text-xs text-gray-400' }, 'Define required fields for all funding requests')
+              ),
+              React.createElement('button', { className: 'px-3 py-1 rounded-lg border' }, 'Edit')
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenSettingsApp() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'text-sm font-semibold mb-3' }, 'Backend Health Check'),
+            React.createElement('input', { className: 'w-full p-3 rounded-lg border border-gray-100 mb-3', value: 'msnhplgpgahqsnlqritl', readOnly: true }),
+            React.createElement('div', { className: 'flex gap-3' },
+              React.createElement('button', { className: 'flex-1 px-3 py-2 rounded-lg border' }, 'Check Backend Health'),
+              React.createElement('button', { className: 'flex-1 px-3 py-2 rounded-lg bg-blue-600 text-white' }, 'Run Full Diagnostic (MUST READ)')
+            ),
+            React.createElement('div', { className: 'mt-4 text-xs text-gray-500 bg-blue-50 p-3 rounded-lg' }, 'Why Manual Deployment? Your code is perfect. Figma Make\'s integration points to Supabase can need manual steps.')
+          )
+        )
+      );
+    }
+
+    function ScreenDirectory() {
+      return (
+        React.createElement('div', { className: 'p-6 space-y-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'flex items-center gap-3' },
+              React.createElement('input', { className: 'flex-1 p-3 rounded-lg border border-gray-100', placeholder: 'Search by name, department, or role...' }),
+              React.createElement('button', { className: 'px-3 py-2 rounded-lg bg-black text-white' }, 'Invite')
+            ),
+            React.createElement('div', { className: 'mt-3 flex gap-2' },
+              React.createElement('select', { className: 'p-2 rounded-lg border' }, React.createElement('option', null, 'All Departments')),
+              React.createElement('select', { className: 'p-2 rounded-lg border' }, React.createElement('option', null, 'All Roles'))
+            )
+          ),
+          React.createElement(Card, { className: 'h-48 flex items-center justify-center text-gray-300' }, 'Directory list placeholder')
+        )
+      );
+    }
+
+    function ScreenOrgChart() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, { className: 'h-96 flex items-center justify-center' }, 'Org chart / drag-to-reorganize placeholder')
+        )
+      );
+    }
+
+    function ScreenQueries() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'flex items-center justify-between' },
+              React.createElement('input', { className: 'flex-1 p-3 rounded-lg border border-gray-100', placeholder: 'Search queries...' }),
+              React.createElement('button', { className: 'ml-3 px-3 py-2 rounded-lg bg-black text-white' }, '+ New')
+            ),
+            React.createElement('div', { className: 'mt-4 text-gray-400' }, 'No queries found')
+          )
+        )
+      );
+    }
+
+    function ScreenInbox() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('input', { className: 'w-full p-3 rounded-lg border border-gray-100', placeholder: 'Search queries...' }),
+            React.createElement('div', { className: 'mt-3 flex gap-2' },
+              React.createElement('select', { className: 'p-2 rounded-lg border' }, React.createElement('option', null, 'All Categories')),
+              React.createElement('select', { className: 'p-2 rounded-lg border' }, React.createElement('option', null, 'All Status'))
+            ),
+            React.createElement('div', { className: 'mt-4 text-gray-400' }, 'No queries assigned to you')
+          )
+        )
+      );
+    }
+
+    function ScreenOnboarding({ mode = 'login' }) {
+      return (
+        React.createElement('div', { className: 'p-6 flex justify-center' },
+          React.createElement(Card, { className: 'w-[420px]' },
+            React.createElement('div', { className: 'text-center' },
+              React.createElement('div', { className: 'text-3xl text-indigo-600' }, '🏢'),
+              React.createElement('h2', { className: 'text-xl font-semibold' }, 'Welcome to FundFlow'),
+              React.createElement('p', { className: 'text-gray-500 mt-1' }, "Manage your organization's funding requests")
+            ),
+            React.createElement('div', { className: 'mt-4 bg-gray-100 rounded-full p-1 grid grid-cols-3' },
+              React.createElement('button', { className: `py-2 rounded-full ${mode === 'login' ? 'bg-white shadow' : ''}` }, 'Login'),
+              React.createElement('button', { className: `py-2 rounded-full ${mode === 'create' ? 'bg-white shadow' : ''}` }, 'Create Org'),
+              React.createElement('button', { className: `py-2 rounded-full ${mode === 'join' ? 'bg-white shadow' : ''}` }, 'Join Org')
+            ),
+            React.createElement('div', { className: 'mt-4 space-y-3' },
+              mode === 'create' && React.createElement(React.Fragment, null,
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Your Name' }),
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Organization Name' }),
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Email' }),
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Password' }),
+                React.createElement('button', { className: 'w-full bg-black text-white py-2 rounded-lg' }, 'Create Organization')
+              ),
+              mode === 'join' && React.createElement(React.Fragment, null,
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Your Name' }),
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Invite Code' }),
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Email' }),
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Password' }),
+                React.createElement('button', { className: 'w-full bg-black text-white py-2 rounded-lg' }, 'Join Organization')
+              ),
+              mode === 'login' && React.createElement(React.Fragment, null,
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Email' }),
+                React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Password' }),
+                React.createElement('button', { className: 'w-full bg-black text-white py-2 rounded-lg' }, 'Login')
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenOnboardingCreateDepartments() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'text-sm font-semibold mb-3' }, 'Welcome, Organization Creator!'),
+            React.createElement('div', { className: 'bg-green-50 p-3 rounded-lg mb-3' }, "Your profile is set. You're assigned to Executive Office at Executive level (L0)"),
+            React.createElement('div', { className: 'bg-yellow-50 p-3 rounded-lg mb-3' },
+              React.createElement('div', { className: 'font-medium' }, 'Create Your Departments'),
+              React.createElement('div', { className: 'mt-2' }, 'No departments yet. Create your first one below!'),
+              React.createElement('div', { className: 'mt-3 flex gap-2' },
+                React.createElement('input', { className: 'flex-1 p-2 rounded-lg border', placeholder: 'Department name (e.g. Sales)' }),
+                React.createElement('button', { className: 'px-3 py-2 rounded-lg bg-black text-white' }, '+')
+              )
+            ),
+            React.createElement('div', { className: 'bg-blue-50 p-3 rounded-lg text-sm' }, 'What you can do in the app: create/rename departments, add sub-departments, customize levels, drag & drop reporting, invite members and assign roles.'),
+            React.createElement('div', { className: 'mt-4 flex justify-end' },
+              React.createElement('button', { className: 'px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 text-white' }, 'Skip & Continue to Dashboard')
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenFundingRequest() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('h3', { className: 'font-semibold' }, 'New Funding Request'),
+            React.createElement('div', { className: 'mt-3 space-y-3' },
+              React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Title' }),
+              React.createElement('textarea', { className: 'w-full p-3 rounded-lg border', placeholder: 'Description', rows: 4 }),
+              React.createElement('div', { className: 'flex gap-2' },
+                React.createElement('input', { className: 'p-3 rounded-lg border flex-1', placeholder: 'Amount (₹)' }),
+                React.createElement('select', { className: 'p-3 rounded-lg border' }, React.createElement('option', null, 'Category'))
+              ),
+              React.createElement('div', { className: 'flex justify-end' },
+                React.createElement('button', { className: 'px-4 py-2 rounded-lg bg-black text-white' }, 'Submit Request')
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenFundingSummaryAI() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'font-semibold' }, 'AI Summary'),
+            React.createElement('div', { className: 'mt-3 text-gray-600 whitespace-pre-line' }, '• Invoice: ₹25,000 — Travel expenses\n• Requested by: Anita (Sales)\n• Approval needed: Dept Head & Finance\n• Urgency: High — Event deadline 10 Nov')
+          )
+        )
+      );
+    }
+
+    function ScreenFundingCriteria() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'font-semibold' }, 'Funding Request Criteria'),
+            React.createElement('div', { className: 'mt-3 text-gray-600' }, 'Require: Project code, Justification, Invoice attachment. Optional: Vendor details.'),
+            React.createElement('div', { className: 'mt-4' },
+              React.createElement('button', { className: 'px-3 py-2 rounded-lg border' }, 'Edit Criteria')
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenDepartmentDetail() {
+      return (
+        React.createElement('div', { className: 'p-6 space-y-4' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'flex justify-between items-center' },
+              React.createElement('div', null,
+                React.createElement('div', { className: 'font-semibold' }, 'Executive Office'),
+                React.createElement('div', { className: 'text-xs text-gray-500' }, 'Allocated: ₹0k · Spent: ₹0k')
+              ),
+              React.createElement('button', { className: 'px-3 py-1 rounded-lg border' }, 'Edit')
+            )
+          ),
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'text-sm text-gray-500 mb-2' }, 'Spending by Category'),
+            React.createElement('div', { className: 'h-36 bg-gray-50 rounded-lg border border-dashed flex items-center justify-center text-gray-300' }, 'Chart placeholder')
+          )
+        )
+      );
+    }
+
+    function ScreenInviteMember() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'font-semibold' }, 'Invite Members'),
+            React.createElement('div', { className: 'mt-3' },
+              React.createElement('input', { className: 'w-full p-3 rounded-lg border', placeholder: 'Email address' })
+            ),
+            React.createElement('div', { className: 'mt-3 flex gap-2' },
+              React.createElement('select', { className: 'p-3 rounded-lg border' }, React.createElement('option', null, 'Role')),
+              React.createElement('button', { className: 'px-3 py-2 rounded-lg bg-black text-white' }, 'Invite')
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenUserManagement() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'font-semibold' }, 'User Management'),
+            React.createElement('div', { className: 'mt-3 bg-gray-50 p-3 rounded-lg' }, 'ha · ha@gmail.com · Administrator'),
+            React.createElement('div', { className: 'mt-3' },
+              React.createElement('button', { className: 'px-3 py-2 rounded-lg border' }, 'Assign Role')
+            )
+          )
+        )
+      );
+    }
+
+    function ScreenBackendDiagnostics() {
+      return (
+        React.createElement('div', { className: 'p-6' },
+          React.createElement(Card, null,
+            React.createElement('div', { className: 'font-semibold' }, 'Diagnostics Log'),
+            React.createElement('pre', { className: 'mt-3 p-3 bg-gray-50 rounded-lg text-xs text-gray-600 max-h-64 overflow-auto' }, `[2025-10-16 19:00] Started full diagnostic...\n[2025-10-16 19:01] DB: OK\n[2025-10-16 19:02] Supabase: Warning - missing env var\n[2025-10-16 19:03] Completed with warnings`)
+          )
+        )
+      );
+    }
+
+    function AppPreview() {
+      const [active, setActive] = useState('Dashboard');
+      const [onboardingMode, setOnboardingMode] = useState('login');
+
+      const render = () => {
+        switch (active) {
+          case 'Dashboard': return React.createElement(ScreenDashboardCompact);
+          case 'Settings': return React.createElement(ScreenSettingsProfile);
+          case 'Org Admin': return React.createElement(ScreenSettingsOrgAdmin);
+          case 'App': return React.createElement(ScreenSettingsApp);
+          case 'Directory': return React.createElement(ScreenDirectory);
+          case 'Org Chart': return React.createElement(ScreenOrgChart);
+          case 'Queries': return React.createElement(ScreenQueries);
+          case 'Inbox': return React.createElement(ScreenInbox);
+          case 'Onboarding': return React.createElement(ScreenOnboarding, { mode: onboardingMode });
+          case 'CreateDepts': return React.createElement(ScreenOnboardingCreateDepartments);
+          case 'FundingForm': return React.createElement(ScreenFundingRequest);
+          case 'AISummary': return React.createElement(ScreenFundingSummaryAI);
+          case 'Criteria': return React.createElement(ScreenFundingCriteria);
+          case 'DeptDetail': return React.createElement(ScreenDepartmentDetail);
+          case 'Invite': return React.createElement(ScreenInviteMember);
+          case 'Users': return React.createElement(ScreenUserManagement);
+          case 'Diagnostics': return React.createElement(ScreenBackendDiagnostics);
+          default: return React.createElement(ScreenDashboardCompact);
+        }
+      };
+
+      return (
+        React.createElement('div', { className: 'min-h-screen bg-gradient-to-b from-[#f7f8fc] to-[#f3f4fb]' },
+          React.createElement(TopNav, { title: active }),
+          React.createElement('div', { className: 'max-w-4xl mx-auto mt-6 mb-24 bg-transparent' }, render()),
+          React.createElement('div', { className: 'fixed top-20 right-6 w-64 p-3 bg-white rounded-2xl shadow-lg border' },
+            React.createElement('div', { className: 'text-xs text-gray-500 mb-2' }, 'Quick Preview (17 screens)'),
+            React.createElement('div', { className: 'grid grid-cols-1 gap-2 text-sm' },
+              React.createElement('button', { onClick: () => setActive('Dashboard'), className: 'text-left' }, '1 Dashboard'),
+              React.createElement('button', { onClick: () => setActive('Settings'), className: 'text-left' }, '2 Settings - Profile'),
+              React.createElement('button', { onClick: () => setActive('Org Admin'), className: 'text-left' }, '3 Settings - Org Admin'),
+              React.createElement('button', { onClick: () => setActive('App'), className: 'text-left' }, '4 Settings - App'),
+              React.createElement('button', { onClick: () => setActive('Directory'), className: 'text-left' }, '5 Directory'),
+              React.createElement('button', { onClick: () => setActive('Org Chart'), className: 'text-left' }, '6 Org Chart'),
+              React.createElement('button', { onClick: () => setActive('Queries'), className: 'text-left' }, '7 Queries'),
+              React.createElement('button', { onClick: () => setActive('Inbox'), className: 'text-left' }, '8 Inbox'),
+              React.createElement('button', { onClick: () => { setActive('Onboarding'); setOnboardingMode('login'); }, className: 'text-left' }, '9 Onboarding - Login'),
+              React.createElement('button', { onClick: () => { setActive('Onboarding'); setOnboardingMode('create'); }, className: 'text-left' }, '10 Onboarding - Create Org'),
+              React.createElement('button', { onClick: () => { setActive('Onboarding'); setOnboardingMode('join'); }, className: 'text-left' }, '11 Onboarding - Join Org'),
+              React.createElement('button', { onClick: () => setActive('CreateDepts'), className: 'text-left' }, '12 Create Departments'),
+              React.createElement('button', { onClick: () => setActive('FundingForm'), className: 'text-left' }, '13 Funding Request Form'),
+              React.createElement('button', { onClick: () => setActive('AISummary'), className: 'text-left' }, '14 AI Funding Summary'),
+              React.createElement('button', { onClick: () => setActive('Criteria'), className: 'text-left' }, '15 Funding Criteria'),
+              React.createElement('button', { onClick: () => setActive('DeptDetail'), className: 'text-left' }, '16 Department Detail'),
+              React.createElement('button', { onClick: () => setActive('Invite'), className: 'text-left' }, '17 Invite Member'),
+              React.createElement('button', { onClick: () => setActive('Users'), className: 'text-left' }, '18 User Management'),
+              React.createElement('button', { onClick: () => setActive('Diagnostics'), className: 'text-left' }, '19 Diagnostics Log')
+            )
+          ),
+          React.createElement(BottomTabs, {
+            active: (active === 'Dashboard' ? 'Dashboard' : (['Directory','Org Chart','Queries','Inbox','Dashboard','Settings'].includes(active) ? active : 'Dashboard')),
+            setActive: (v) => setActive(v)
+          })
+        )
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(AppPreview));
+  </script>
+</body>
+</html>
