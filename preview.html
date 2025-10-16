@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Funds - App Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #fafafa;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .splash-screen {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .splash-screen:hover {
+            transform: scale(1.02);
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo::before {
+            content: "🏦";
+            font-size: 60px;
+        }
+
+        .app-name {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 80px;
+            line-height: 24px;
+        }
+
+        .tap-indicator {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .tap-text {
+            margin-right: 8px;
+        }
+
+        .auth-selection {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            padding: 24px;
+        }
+
+        .auth-selection.show {
+            display: block;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .auth-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .auth-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .auth-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .auth-logo::before {
+            content: "🏦";
+            font-size: 40px;
+        }
+
+        .auth-subtitle {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .auth-description {
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            margin-bottom: 48px;
+            opacity: 0.9;
+            line-height: 22px;
+        }
+
+        .auth-buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .auth-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .admin-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 32px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .admin-text {
+            margin-right: 8px;
+            opacity: 0.9;
+        }
+
+        .dashboard {
+            display: none;
+            background: #fafafa;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .dashboard.show {
+            display: block;
+        }
+
+        .dashboard-header {
+            background: white;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .greeting {
+            font-size: 16px;
+            opacity: 0.7;
+        }
+
+        .user-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .header-button {
+            position: relative;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #FF4444;
+            border-radius: 10px;
+            min-width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .org-card {
+            margin: 24px;
+            padding: 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .org-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .org-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 12px;
+        }
+
+        .org-code {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .section {
+            margin: 24px;
+            padding: 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .budget-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .budget-item {
+            text-align: center;
+        }
+
+        .budget-label {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+
+        .budget-value {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .chart-placeholder {
+            height: 220px;
+            background: linear-gradient(45deg, #667eea20, #764ba220);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .quick-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .quick-action:hover {
+            transform: translateY(-4px);
+        }
+
+        .quick-action-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .quick-action-text {
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .digest-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .digest-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .digest-text {
+            font-size: 14px;
+        }
+
+        .logout-container {
+            padding: 24px;
+            padding-bottom: 32px;
+        }
+
+        .logout-button {
+            width: 100%;
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-button:hover,
+        .nav-button.active {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="screen">
+            <!-- Splash Screen -->
+            <div class="splash-screen" id="splashScreen" onclick="showAuthSelection()">
+                <div class="logo"></div>
+                <div class="app-name">Rapid Funds</div>
+                <div class="tagline">Streamline Your Funding Approvals</div>
+                <div class="tap-indicator">
+                    <span class="tap-text">Tap anywhere to continue</span>
+                    <span>👆</span>
+                </div>
+            </div>
+
+            <!-- Auth Selection Screen -->
+            <div class="auth-selection" id="authSelection">
+                <button class="back-button" onclick="showSplash()">←</button>
+                <div class="auth-title">Welcome to Rapid Funds</div>
+                <div class="auth-content">
+                    <div class="auth-logo"></div>
+                    <div class="auth-subtitle">Choose your action</div>
+                    <div class="auth-description">Sign in to your account or join an existing organization</div>
+                    <div class="auth-buttons">
+                        <button class="auth-button" onclick="showDashboard()">Login</button>
+                        <button class="auth-button" onclick="showDashboard()">Join Organization</button>
+                    </div>
+                    <div class="admin-option" onclick="showDashboard()">
+                        <span class="admin-text">Create New Organization</span>
+                        <span>⚙️</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Screen -->
+            <div class="dashboard" id="dashboard">
+                <div class="dashboard-header">
+                    <div>
+                        <div class="greeting">Welcome back,</div>
+                        <div class="user-name">John Doe</div>
+                    </div>
+                    <div class="header-actions">
+                        <div class="header-button">
+                            🔔
+                            <div class="notification-badge">3</div>
+                        </div>
+                        <div class="header-button">👤</div>
+                    </div>
+                </div>
+
+                <div class="org-card">
+                    <div class="org-header">
+                        <span>🏢</span>
+                        <div class="org-name">Tech Corp</div>
+                    </div>
+                    <div class="org-code">Code: TECH2024</div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Budget Overview</div>
+                    <div class="budget-summary">
+                        <div class="budget-item">
+                            <div class="budget-label">Total Budget</div>
+                            <div class="budget-value">$1,000,000</div>
+                        </div>
+                        <div class="budget-item">
+                            <div class="budget-label">Amount Spent</div>
+                            <div class="budget-value" style="color: #f44336;">$750,000</div>
+                        </div>
+                        <div class="budget-item">
+                            <div class="budget-label">Remaining</div>
+                            <div class="budget-value" style="color: #667eea;">$250,000</div>
+                        </div>
+                    </div>
+                    <div class="chart-placeholder">
+                        📊 Department Budget Chart
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Daily Digest</div>
+                    <div class="digest-items">
+                        <div class="digest-item">
+                            <span style="color: #f44336;">⏳</span>
+                            <span class="digest-text">5 pending approvals</span>
+                        </div>
+                        <div class="digest-item">
+                            <span style="color: #667eea;">📈</span>
+                            <span class="digest-text">Engineering department at 80% budget</span>
+                        </div>
+                        <div class="digest-item">
+                            <span style="color: #764ba2;">💡</span>
+                            <span class="digest-text">AI suggests adding a QA team</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Quick Actions</div>
+                    <div class="quick-actions">
+                        <div class="quick-action">
+                            <div class="quick-action-icon" style="background: rgba(103, 126, 234, 0.2); color: #667eea;">🌳</div>
+                            <div class="quick-action-text">Org Chart</div>
+                        </div>
+                        <div class="quick-action">
+                            <div class="quick-action-icon" style="background: rgba(118, 75, 162, 0.2); color: #764ba2;">📊</div>
+                            <div class="quick-action-text">Budget Analysis</div>
+                        </div>
+                        <div class="quick-action">
+                            <div class="quick-action-icon" style="background: rgba(240, 147, 251, 0.2); color: #f093fb;">🔔</div>
+                            <div class="quick-action-text">Notifications</div>
+                        </div>
+                        <div class="quick-action">
+                            <div class="quick-action-icon" style="background: rgba(103, 126, 234, 0.2); color: #667eea;">👤</div>
+                            <div class="quick-action-text">Profile</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logout-container">
+                    <button class="logout-button" onclick="showSplash()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" onclick="showSplash()">🏠</button>
+        <button class="nav-button" onclick="showAuthSelection()">🔐</button>
+        <button class="nav-button active" onclick="showDashboard()">📱</button>
+    </div>
+
+    <script>
+        function showSplash() {
+            document.getElementById('splashScreen').style.display = 'flex';
+            document.getElementById('authSelection').classList.remove('show');
+            document.getElementById('dashboard').classList.remove('show');
+        }
+
+        function showAuthSelection() {
+            document.getElementById('splashScreen').style.display = 'none';
+            document.getElementById('authSelection').classList.add('show');
+            document.getElementById('dashboard').classList.remove('show');
+        }
+
+        function showDashboard() {
+            document.getElementById('splashScreen').style.display = 'none';
+            document.getElementById('authSelection').classList.remove('show');
+            document.getElementById('dashboard').classList.add('show');
+        }
+
+        // Auto-advance demo
+        setTimeout(() => {
+            showAuthSelection();
+        }, 3000);
+
+        setTimeout(() => {
+            showDashboard();
+        }, 6000);
+    </script>
+</body>
+</html>
