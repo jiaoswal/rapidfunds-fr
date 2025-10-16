@@ -15,69 +15,210 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #F5F7FB;
+            background: #F8FAFC;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #1E293B;
+        }
+
+        .app-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #1D1E20;
+            min-height: 100vh;
         }
 
-        .phone-container {
-            width: 375px;
-            height: 812px;
-            background: #FFFFFF;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(21, 32, 69, 0.15);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
+        /* Desktop Layout */
+        @media (min-width: 1024px) {
+            .sidebar {
+                width: 280px;
+                background: #152045;
+                color: white;
+                padding: 24px;
+                position: fixed;
+                height: 100vh;
+                overflow-y: auto;
+            }
 
-        /* Desktop/Tablet Responsive Design */
-        @media (min-width: 768px) {
+            .main-content {
+                margin-left: 280px;
+                flex: 1;
+                padding: 32px;
+                max-width: calc(100vw - 280px);
+            }
+
             .phone-container {
-                width: 90vw;
-                max-width: 1200px;
-                height: 90vh;
-                max-height: 800px;
-                border-radius: 20px;
-                padding: 4px;
+                display: none;
             }
-            
-            .screen {
-                border-radius: 16px;
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 1023px) {
+            .sidebar {
+                display: none;
             }
-            
-            .dashboard {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-                padding: 20px;
+
+            .main-content {
+                display: none;
             }
-            
-            .dashboard-header {
-                grid-column: 1 / -1;
-                margin-bottom: 0;
+
+            .phone-container {
+                width: 100vw;
+                height: 100vh;
+                background: #FFFFFF;
+                overflow: hidden;
             }
-            
-            .org-card {
-                grid-column: 1 / -1;
-                margin: 0;
-            }
-            
-            .section {
-                margin: 0;
-            }
-            
-            .quick-actions {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            }
-            
-            .quick-action {
-                width: 100%;
-            }
+        }
+
+        /* Sidebar Styles */
+        .logo-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FFD600 0%, #FFA726 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #152045;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .nav-link.active {
+            background: #2979FF;
+            color: white;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content Styles */
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: #64748B;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E2E8F0;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1E293B;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 20px;
+            background: #F8FAFC;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .metric-change {
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .metric-change.positive {
+            color: #059669;
+        }
+
+        .metric-change.negative {
+            color: #DC2626;
         }
 
         @media (min-width: 1024px) {
@@ -701,6 +842,127 @@
     </style>
 </head>
 <body>
+    <!-- Desktop Layout -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">RF</div>
+                <div class="logo-text">Rapid Funds</div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" onclick="showPage('dashboard')">
+                            <div class="nav-icon">📊</div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showPage('orgchart')">
+                            <div class="nav-icon">🏢</div>
+                            Org Chart
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showPage('queries')">
+                            <div class="nav-icon">🔍</div>
+                            Queries
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showPage('inbox')">
+                            <div class="nav-icon">📬</div>
+                            Inbox
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showPage('settings')">
+                            <div class="nav-icon">⚙️</div>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">Welcome back, John Doe. Here's your organization overview.</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Budget Overview</h2>
+                    </div>
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <div class="metric-value">$1,000,000</div>
+                            <div class="metric-label">Total Budget</div>
+                            <div class="metric-change positive">+5.2%</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$750,000</div>
+                            <div class="metric-label">Amount Spent</div>
+                            <div class="metric-change negative">+12.1%</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$250,000</div>
+                            <div class="metric-label">Remaining</div>
+                            <div class="metric-change negative">-8.3%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Pending Approvals</h2>
+                    </div>
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <div class="metric-value">5</div>
+                            <div class="metric-label">Funding Requests</div>
+                            <div class="metric-change">Requires attention</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label">New Members</div>
+                            <div class="metric-change">Awaiting approval</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Department Status</h2>
+                    </div>
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <div class="metric-value">80%</div>
+                            <div class="metric-label">Engineering</div>
+                            <div class="metric-change negative">Over budget</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">65%</div>
+                            <div class="metric-label">Marketing</div>
+                            <div class="metric-change positive">On track</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">45%</div>
+                            <div class="metric-label">Sales</div>
+                            <div class="metric-change positive">Under budget</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Layout -->
     <div class="phone-container">
         <div class="screen">
             <!-- Hero Screen -->
@@ -850,6 +1112,48 @@
     </div>
 
     <script>
+        // Desktop navigation
+        function showPage(page) {
+            // Update page title and content
+            const pageTitle = document.querySelector('.page-title');
+            const pageSubtitle = document.querySelector('.page-subtitle');
+            
+            const pages = {
+                'dashboard': {
+                    title: 'Dashboard',
+                    subtitle: 'Welcome back, John Doe. Here\'s your organization overview.'
+                },
+                'orgchart': {
+                    title: 'Organization Chart',
+                    subtitle: 'View and manage your organizational structure.'
+                },
+                'queries': {
+                    title: 'Queries & Reports',
+                    subtitle: 'Search and analyze your funding data.'
+                },
+                'inbox': {
+                    title: 'Inbox',
+                    subtitle: 'Manage your notifications and messages.'
+                },
+                'settings': {
+                    title: 'Settings',
+                    subtitle: 'Configure your account and organization preferences.'
+                }
+            };
+
+            if (pages[page]) {
+                pageTitle.textContent = pages[page].title;
+                pageSubtitle.textContent = pages[page].subtitle;
+            }
+
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Mobile navigation
         function showHero() {
             document.getElementById('heroScreen').style.display = 'flex';
             document.getElementById('authSelection').classList.remove('show');
@@ -872,32 +1176,30 @@
         }
 
         function showOrgChart() {
-            showDashboard(); // For demo purposes
+            showDashboard();
             updateNavActive('orgchart');
         }
 
         function showQueries() {
-            showDashboard(); // For demo purposes
+            showDashboard();
             updateNavActive('queries');
         }
 
         function showInbox() {
-            showDashboard(); // For demo purposes
+            showDashboard();
             updateNavActive('inbox');
         }
 
         function showSettings() {
-            showDashboard(); // For demo purposes
+            showDashboard();
             updateNavActive('settings');
         }
 
         function updateNavActive(activeTab) {
-            // Remove active class from all nav items
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
 
-            // Add active class to clicked item
             const navItems = {
                 'hero': null,
                 'auth': null,
@@ -913,9 +1215,11 @@
             }
         }
 
-        // Auto-advance demo
+        // Auto-advance demo for mobile
         setTimeout(() => {
-            showDashboard();
+            if (window.innerWidth < 1024) {
+                showDashboard();
+            }
         }, 3000);
     </script>
 </body>
