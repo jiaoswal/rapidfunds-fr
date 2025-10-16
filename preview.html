@@ -104,9 +104,10 @@
         }
 
         .logo-text {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
-            color: white;
+            color: #152045;
+            margin-top: 16px;
         }
 
         .nav-menu {
@@ -767,6 +768,9 @@
             text-align: center;
             max-width: 500px;
             padding: 40px;
+            background: linear-gradient(135deg, #F5F7FB 0%, #E3F2FD 100%);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(21, 32, 69, 0.1);
         }
 
         .splash-content {
@@ -774,16 +778,16 @@
         }
 
         .splash-headline {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 700;
-            color: #1E293B;
+            color: #152045;
             margin-bottom: 16px;
             line-height: 1.2;
         }
 
         .splash-subtitle {
             font-size: 18px;
-            color: #64748B;
+            color: #596377;
             margin-bottom: 40px;
             line-height: 1.6;
         }
@@ -1638,10 +1642,17 @@
     </div>
 
     <script>
+        // Initialize - hide footer navigation on splash screen
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('bottom-nav').style.display = 'none';
+        });
+        
         // Entry Flow Functions
         function showEntryOptions() {
             document.getElementById('splash-screen').style.display = 'none';
             document.getElementById('entry-options').style.display = 'block';
+            // Hide footer navigation during entry flow
+            document.getElementById('bottom-nav').style.display = 'none';
         }
 
         function showSplash() {
@@ -1649,6 +1660,9 @@
             document.getElementById('entry-options').style.display = 'none';
             document.getElementById('new-org-form').style.display = 'none';
             document.getElementById('join-org-form').style.display = 'none';
+            document.getElementById('onboarding-wizard').style.display = 'none';
+            // Hide footer navigation on splash screen
+            document.getElementById('bottom-nav').style.display = 'none';
         }
 
         function showNewOrgForm() {
@@ -1718,6 +1732,11 @@
             if (targetPage) {
                 targetPage.style.display = 'block';
             }
+
+            // Show main app and footer navigation when navigating
+            document.getElementById('entry-flow').style.display = 'none';
+            document.getElementById('main-app').style.display = 'block';
+            document.getElementById('bottom-nav').style.display = 'flex';
 
             // Update navigation
             document.querySelectorAll('.nav-item').forEach(item => {
