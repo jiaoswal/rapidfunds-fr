@@ -30,24 +30,32 @@
         /* Desktop Layout */
         @media (min-width: 1024px) {
             .sidebar {
-                width: 280px;
-                background: #152045;
-                color: white;
-                padding: 24px;
-                position: fixed;
-                height: 100vh;
-                overflow-y: auto;
+                display: none;
             }
 
             .main-content {
-                margin-left: 280px;
+                width: 100%;
                 flex: 1;
                 padding: 32px;
-                max-width: calc(100vw - 280px);
+                padding-bottom: 100px;
             }
 
             .phone-container {
                 display: none;
+            }
+
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background: white;
+                border-top: 1px solid #E2E8F0;
+                display: flex;
+                justify-content: center;
+                padding: 16px 0;
+                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
             }
         }
 
@@ -91,7 +99,7 @@
             content: '';
             width: 32px;
             height: 32px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>') no-repeat center;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:white;stop-opacity:1" /><stop offset="100%" style="stop-color:%23E3F2FD;stop-opacity:1" /></linearGradient></defs><path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(%23logoGrad)"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
             background-size: contain;
         }
 
@@ -314,7 +322,7 @@
             content: '';
             width: 48px;
             height: 48px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>') no-repeat center;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:white;stop-opacity:1" /><stop offset="100%" style="stop-color:%23E3F2FD;stop-opacity:1" /></linearGradient></defs><path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(%23logoGrad2)"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
             background-size: contain;
         }
 
@@ -424,8 +432,11 @@
         }
 
         .auth-logo::before {
-            content: "🏦";
-            font-size: 40px;
+            content: '';
+            width: 40px;
+            height: 40px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="authLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:white;stop-opacity:1" /><stop offset="100%" style="stop-color:%23E3F2FD;stop-opacity:1" /></linearGradient></defs><path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(%23authLogoGrad)"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
+            background-size: contain;
         }
 
         .auth-subtitle {
@@ -689,11 +700,11 @@
             transform: translateX(-50%);
             width: 375px;
             background: white;
-            border-top: 1px solid #E8ECF0;
+            border-top: 1px solid #E2E8F0;
             display: flex;
             justify-content: space-around;
             padding: 12px 0;
-            box-shadow: 0 -2px 8px rgba(21, 32, 69, 0.08);
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .nav-item {
@@ -705,10 +716,12 @@
             transition: all 0.3s ease;
             border-radius: 8px;
             min-width: 60px;
+            text-decoration: none;
+            color: inherit;
         }
 
         .nav-item:hover {
-            background: #F5F7FB;
+            background: #F8FAFC;
         }
 
         .nav-item.active {
@@ -718,7 +731,12 @@
         .nav-icon {
             font-size: 20px;
             margin-bottom: 4px;
-            color: #596377;
+            color: #64748B;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .nav-item.active .nav-icon {
@@ -728,18 +746,11 @@
         .nav-label {
             font-size: 12px;
             font-weight: 500;
-            color: #596377;
+            color: #64748B;
         }
 
         .nav-item.active .nav-label {
             color: #2979FF;
-        }
-
-        @media (min-width: 768px) {
-            .bottom-nav {
-                width: 90vw;
-                max-width: 1200px;
-            }
         }
 
         .quick-actions {
@@ -850,117 +861,153 @@
 <body>
     <!-- Desktop Layout -->
     <div class="app-container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo-section">
-                <div class="logo">RF</div>
-                <div class="logo-text">Rapid Funds</div>
-            </div>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active" onclick="showPage('dashboard')">
-                            <div class="nav-icon"></div>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="showPage('orgchart')">
-                            <div class="nav-icon"></div>
-                            Org Chart
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="showPage('queries')">
-                            <div class="nav-icon"></div>
-                            Queries
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="showPage('inbox')">
-                            <div class="nav-icon"></div>
-                            Inbox
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="showPage('settings')">
-                            <div class="nav-icon"></div>
-                            Settings
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
         <!-- Main Content -->
         <div class="main-content">
-            <div class="page-header">
-                <h1 class="page-title">Dashboard</h1>
-                <p class="page-subtitle">Welcome back, John Doe. Here's your organization overview.</p>
+            <!-- Dashboard Page -->
+            <div id="dashboard-page" class="page">
+                <div class="page-header">
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Welcome back, John Doe. Here's your organization overview.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Budget Overview</h2>
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value">$1,000,000</div>
+                                <div class="metric-label">Total Budget</div>
+                                <div class="metric-change positive">+5.2%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">$750,000</div>
+                                <div class="metric-label">Amount Spent</div>
+                                <div class="metric-change negative">+12.1%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">$250,000</div>
+                                <div class="metric-label">Remaining</div>
+                                <div class="metric-change negative">-8.3%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Pending Approvals</h2>
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value">5</div>
+                                <div class="metric-label">Funding Requests</div>
+                                <div class="metric-change">Requires attention</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">3</div>
+                                <div class="metric-label">New Members</div>
+                                <div class="metric-change">Awaiting approval</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Department Status</h2>
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value">80%</div>
+                                <div class="metric-label">Engineering</div>
+                                <div class="metric-change negative">Over budget</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">65%</div>
+                                <div class="metric-label">Marketing</div>
+                                <div class="metric-change positive">On track</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">45%</div>
+                                <div class="metric-label">Sales</div>
+                                <div class="metric-change positive">Under budget</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Budget Overview</h2>
-                    </div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">$1,000,000</div>
-                            <div class="metric-label">Total Budget</div>
-                            <div class="metric-change positive">+5.2%</div>
+            <!-- Org Chart Page -->
+            <div id="orgchart-page" class="page" style="display: none;">
+                <div class="page-header">
+                    <h1 class="page-title">Organization Chart</h1>
+                    <p class="page-subtitle">View and manage your organizational structure.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Organizational Hierarchy</h2>
                         </div>
-                        <div class="metric">
-                            <div class="metric-value">$750,000</div>
-                            <div class="metric-label">Amount Spent</div>
-                            <div class="metric-change negative">+12.1%</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">$250,000</div>
-                            <div class="metric-label">Remaining</div>
-                            <div class="metric-change negative">-8.3%</div>
+                        <div style="padding: 20px; text-align: center; color: #64748B;">
+                            Interactive organizational chart will be displayed here
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Pending Approvals</h2>
-                    </div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">5</div>
-                            <div class="metric-label">Funding Requests</div>
-                            <div class="metric-change">Requires attention</div>
+            <!-- Queries Page -->
+            <div id="queries-page" class="page" style="display: none;">
+                <div class="page-header">
+                    <h1 class="page-title">Queries & Reports</h1>
+                    <p class="page-subtitle">Search and analyze your funding data.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Search & Filter</h2>
                         </div>
-                        <div class="metric">
-                            <div class="metric-value">3</div>
-                            <div class="metric-label">New Members</div>
-                            <div class="metric-change">Awaiting approval</div>
+                        <div style="padding: 20px; text-align: center; color: #64748B;">
+                            Search and filter interface will be displayed here
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Department Status</h2>
+            <!-- Inbox Page -->
+            <div id="inbox-page" class="page" style="display: none;">
+                <div class="page-header">
+                    <h1 class="page-title">Inbox</h1>
+                    <p class="page-subtitle">Manage your notifications and messages.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Messages</h2>
+                        </div>
+                        <div style="padding: 20px; text-align: center; color: #64748B;">
+                            Message list and notifications will be displayed here
+                        </div>
                     </div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">80%</div>
-                            <div class="metric-label">Engineering</div>
-                            <div class="metric-change negative">Over budget</div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings-page" class="page" style="display: none;">
+                <div class="page-header">
+                    <h1 class="page-title">Settings</h1>
+                    <p class="page-subtitle">Configure your account and organization preferences.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Account Settings</h2>
                         </div>
-                        <div class="metric">
-                            <div class="metric-value">65%</div>
-                            <div class="metric-label">Marketing</div>
-                            <div class="metric-change positive">On track</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">45%</div>
-                            <div class="metric-label">Sales</div>
-                            <div class="metric-change positive">Under budget</div>
+                        <div style="padding: 20px; text-align: center; color: #64748B;">
+                            Settings and configuration options will be displayed here
                         </div>
                     </div>
                 </div>
@@ -1016,7 +1063,12 @@
 
                 <div class="org-card">
                     <div class="org-header">
-                        <div class="org-icon">TC</div>
+                        <div class="org-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="white"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <div class="org-name">Tech Corp</div>
                     </div>
                     <div class="org-code">Code: TECH2024</div>
@@ -1120,43 +1172,35 @@
     <script>
         // Desktop navigation
         function showPage(page) {
-            // Update page title and content
-            const pageTitle = document.querySelector('.page-title');
-            const pageSubtitle = document.querySelector('.page-subtitle');
-            
-            const pages = {
-                'dashboard': {
-                    title: 'Dashboard',
-                    subtitle: 'Welcome back, John Doe. Here\'s your organization overview.'
-                },
-                'orgchart': {
-                    title: 'Organization Chart',
-                    subtitle: 'View and manage your organizational structure.'
-                },
-                'queries': {
-                    title: 'Queries & Reports',
-                    subtitle: 'Search and analyze your funding data.'
-                },
-                'inbox': {
-                    title: 'Inbox',
-                    subtitle: 'Manage your notifications and messages.'
-                },
-                'settings': {
-                    title: 'Settings',
-                    subtitle: 'Configure your account and organization preferences.'
-                }
-            };
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => {
+                p.style.display = 'none';
+            });
 
-            if (pages[page]) {
-                pageTitle.textContent = pages[page].title;
-                pageSubtitle.textContent = pages[page].subtitle;
+            // Show selected page
+            const targetPage = document.getElementById(page + '-page');
+            if (targetPage) {
+                targetPage.style.display = 'block';
             }
 
             // Update navigation
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
             });
-            event.target.classList.add('active');
+
+            // Find and activate the clicked nav item
+            const navItems = document.querySelectorAll('.nav-item');
+            const pageMap = {
+                'dashboard': 0,
+                'orgchart': 1,
+                'queries': 2,
+                'inbox': 3,
+                'settings': 4
+            };
+
+            if (pageMap[page] !== undefined) {
+                navItems[pageMap[page]].classList.add('active');
+            }
         }
 
         // Mobile navigation
