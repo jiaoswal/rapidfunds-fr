@@ -104,10 +104,11 @@
         }
 
         .logo-text {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
-            color: #152045;
+            color: white;
             margin-top: 16px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .nav-menu {
@@ -348,24 +349,41 @@
         }
 
         .cta-button {
-            background: #2979FF;
-            color: white;
+            background: linear-gradient(135deg, #FFD600 0%, #FFA726 100%);
+            color: #152045;
             border: none;
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 20px 48px;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(41, 121, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 12px 32px rgba(255, 214, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             position: relative;
             z-index: 2;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            background: #1E6BFF;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(41, 121, 255, 0.4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 16px 40px rgba(255, 214, 0, 0.6);
         }
 
         .tap-indicator {
@@ -693,65 +711,312 @@
             border: 2px dashed #E8ECF0;
         }
 
-        /* Bottom Navigation */
-        .bottom-nav {
+        /* Modern Smart Navigation */
+        .smart-nav {
             position: fixed;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 375px;
-            background: white;
-            border-top: 1px solid #E2E8F0;
-            display: none; /* Hidden by default */
-            justify-content: space-around;
-            padding: 12px 0;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            width: min(95vw, 800px);
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 20px 20px 0 0;
+            display: none;
+            padding: 8px 16px 12px;
+            box-shadow: 0 -8px 32px rgba(21, 32, 69, 0.12);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4px;
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 8px 12px;
+            padding: 8px 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            min-width: 60px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            min-width: 48px;
             text-decoration: none;
             color: inherit;
+            position: relative;
+            flex: 1;
         }
 
         .nav-item:hover {
-            background: #F8FAFC;
+            background: rgba(41, 121, 255, 0.08);
+            transform: translateY(-1px);
         }
 
         .nav-item.active {
-            background: #E3F2FD;
+            background: rgba(41, 121, 255, 0.12);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #2979FF;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(41, 121, 255, 0.4);
         }
 
         .nav-icon {
-            font-size: 20px;
-            margin-bottom: 4px;
+            font-size: 18px;
+            margin-bottom: 2px;
             color: #64748B;
             width: 20px;
             height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
         }
 
         .nav-item.active .nav-icon {
             color: #2979FF;
+            transform: scale(1.1);
         }
 
         .nav-label {
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 500;
             color: #64748B;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 1.2;
         }
 
         .nav-item.active .nav-label {
             color: #2979FF;
+            font-weight: 600;
+        }
+
+        /* Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: linear-gradient(135deg, #FF4444 0%, #FF6B6B 100%);
+            color: white;
+            border-radius: 8px;
+            min-width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+            border: 2px solid white;
+        }
+
+        /* User Profile Dropdown */
+        .user-profile {
+            position: relative;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(21, 32, 69, 0.15);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1001;
+        }
+
+        .profile-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #1E293B;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(41, 121, 255, 0.08);
+        }
+
+        .dropdown-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 12px;
+            color: #64748B;
+        }
+
+        /* Mobile Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hamburger-menu:hover {
+            background: rgba(41, 121, 255, 0.08);
+        }
+
+        .hamburger-line {
+            width: 18px;
+            height: 2px;
+            background: #64748B;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .mobile-menu.show {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            color: #1E293B;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu-item:hover {
+            color: #2979FF;
+        }
+
+        .mobile-menu-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            color: #64748B;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .smart-nav {
+                width: 100%;
+                border-radius: 0;
+                padding: 8px 12px 12px;
+            }
+            
+            .nav-container {
+                gap: 2px;
+            }
+            
+            .nav-item {
+                min-width: 40px;
+                padding: 6px 4px;
+            }
+            
+            .nav-icon {
+                font-size: 16px;
+            }
+            
+            .nav-label {
+                font-size: 9px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-container {
+                display: none;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+                margin: 0 auto;
+            }
         }
 
         /* Entry Flow Styles */
@@ -761,7 +1026,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 0;
         }
         
         /* Hide navigation during entry flow */
@@ -771,11 +1036,68 @@
 
         .splash-screen {
             text-align: center;
-            max-width: 500px;
-            padding: 40px;
-            background: linear-gradient(135deg, #F5F7FB 0%, #E3F2FD 100%);
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(21, 32, 69, 0.1);
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            background: linear-gradient(135deg, #152045 0%, #2979FF 50%, #1E3A8A 100%);
+            border-radius: 0;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .splash-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .splash-screen > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Floating particles animation */
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 1.5s; }
+        .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 2.5s; }
+        .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 3.5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            50% { transform: translateY(-20vh) rotate(180deg); }
         }
 
         .splash-content {
@@ -783,18 +1105,22 @@
         }
 
         .splash-headline {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
-            color: #152045;
-            margin-bottom: 16px;
+            color: white;
+            margin-bottom: 20px;
             line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
         }
 
         .splash-subtitle {
-            font-size: 18px;
-            color: #596377;
-            margin-bottom: 40px;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 48px;
             line-height: 1.6;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
         }
 
         .entry-options {
@@ -1175,6 +1501,17 @@
     <div id="entry-flow" class="entry-container">
         <!-- Splash Screen -->
         <div id="splash-screen" class="splash-screen">
+            <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
             <div class="logo-section">
                 <div class="logo"></div>
                 <div class="logo-text">Rapid Funds</div>
@@ -1622,34 +1959,265 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <div class="nav-item active" onclick="showDashboard()">
-            <div class="nav-icon"></div>
-            <div class="nav-label">Dashboard</div>
+    <!-- Smart Navigation -->
+    <div class="smart-nav" id="smartNav">
+        <div class="nav-container">
+            <div class="nav-item active" onclick="navigateTo('dashboard')" data-page="dashboard">
+                <div class="nav-icon">📊</div>
+                <div class="nav-label">Dashboard</div>
+            </div>
+            <div class="nav-item" onclick="navigateTo('orgchart')" data-page="orgchart">
+                <div class="nav-icon">🌳</div>
+                <div class="nav-label">Org Chart</div>
+            </div>
+            <div class="nav-item" onclick="navigateTo('notifications')" data-page="notifications">
+                <div class="nav-icon">🔔</div>
+                <div class="notification-badge" id="notificationBadge">3</div>
+                <div class="nav-label">Alerts</div>
+            </div>
+            <div class="nav-item" onclick="navigateTo('digest')" data-page="digest">
+                <div class="nav-icon">📋</div>
+                <div class="nav-label">Digest</div>
+            </div>
+            <div class="nav-item" onclick="navigateTo('budget')" data-page="budget">
+                <div class="nav-icon">💰</div>
+                <div class="nav-label">Budget</div>
+            </div>
+            <div class="nav-item user-profile" onclick="toggleProfileDropdown()">
+                <div class="nav-icon">👤</div>
+                <div class="nav-label">Profile</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#" class="dropdown-item" onclick="navigateTo('profile')">
+                        <span class="dropdown-icon">👤</span>
+                        My Profile
+                    </a>
+                    <a href="#" class="dropdown-item" onclick="navigateTo('settings')">
+                        <span class="dropdown-icon">⚙️</span>
+                        Settings
+                    </a>
+                    <a href="#" class="dropdown-item" onclick="logout()">
+                        <span class="dropdown-icon">🚪</span>
+                        Logout
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="nav-item" onclick="showOrgChart()">
-            <div class="nav-icon"></div>
-            <div class="nav-label">Org Chart</div>
+        <div class="hamburger-menu" id="hamburgerMenu" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
         </div>
-        <div class="nav-item" onclick="showQueries()">
-            <div class="nav-icon"></div>
-            <div class="nav-label">Queries</div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-item" onclick="navigateTo('dashboard')">
+            <span class="mobile-menu-icon">📊</span>
+            Dashboard
         </div>
-        <div class="nav-item" onclick="showInbox()">
-            <div class="nav-icon"></div>
-            <div class="nav-label">Inbox</div>
+        <div class="mobile-menu-item" onclick="navigateTo('orgchart')">
+            <span class="mobile-menu-icon">🌳</span>
+            Org Chart
         </div>
-        <div class="nav-item" onclick="showSettings()">
-            <div class="nav-icon"></div>
-            <div class="nav-label">Settings</div>
+        <div class="mobile-menu-item" onclick="navigateTo('notifications')">
+            <span class="mobile-menu-icon">🔔</span>
+            Notifications
+            <span class="notification-badge" style="position: relative; top: auto; right: auto; margin-left: auto;">3</span>
+        </div>
+        <div class="mobile-menu-item" onclick="navigateTo('digest')">
+            <span class="mobile-menu-icon">📋</span>
+            Daily Digest
+        </div>
+        <div class="mobile-menu-item" onclick="navigateTo('budget')">
+            <span class="mobile-menu-icon">💰</span>
+            Budget Overview
+        </div>
+        <div class="mobile-menu-item" onclick="navigateTo('profile')">
+            <span class="mobile-menu-icon">👤</span>
+            Profile
+        </div>
+        <div class="mobile-menu-item" onclick="navigateTo('settings')">
+            <span class="mobile-menu-icon">⚙️</span>
+            Settings
+        </div>
+        <div class="mobile-menu-item" onclick="logout()">
+            <span class="mobile-menu-icon">🚪</span>
+            Logout
         </div>
     </div>
 
     <script>
+        // Smart Navigation System
+        let currentPage = 'dashboard';
+        let userBehavior = {
+            dashboard: 0,
+            orgchart: 0,
+            notifications: 0,
+            digest: 0,
+            budget: 0,
+            profile: 0,
+            settings: 0
+        };
+
+        // Initialize navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('smartNav').style.display = 'flex';
+            trackUserBehavior('dashboard');
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.user-profile')) {
+                    closeProfileDropdown();
+                }
+                if (!e.target.closest('.mobile-menu') && !e.target.closest('.hamburger-menu')) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Navigation function
+        function navigateTo(page) {
+            // Track user behavior for AI reordering
+            trackUserBehavior(page);
+            
+            // Update active state
+            updateActiveNavItem(page);
+            
+            // Navigate to page
+            switch(page) {
+                case 'dashboard':
+                    showDashboard();
+                    break;
+                case 'orgchart':
+                    showOrgChart();
+                    break;
+                case 'notifications':
+                    showNotifications();
+                    break;
+                case 'digest':
+                    showDigest();
+                    break;
+                case 'budget':
+                    showBudget();
+                    break;
+                case 'profile':
+                    showProfile();
+                    break;
+                case 'settings':
+                    showSettings();
+                    break;
+            }
+            
+            currentPage = page;
+            closeMobileMenu();
+        }
+
+        // Track user behavior for AI reordering
+        function trackUserBehavior(page) {
+            userBehavior[page]++;
+            // Reorder navigation based on usage (AI enhancement)
+            reorderNavigation();
+        }
+
+        // AI-powered navigation reordering
+        function reorderNavigation() {
+            const sortedPages = Object.entries(userBehavior)
+                .sort(([,a], [,b]) => b - a)
+                .map(([page]) => page);
+            
+            // Update navigation order in DOM
+            const navContainer = document.querySelector('.nav-container');
+            const navItems = Array.from(navContainer.children);
+            
+            // Sort nav items based on usage
+            navItems.sort((a, b) => {
+                const pageA = a.getAttribute('data-page');
+                const pageB = b.getAttribute('data-page');
+                return sortedPages.indexOf(pageA) - sortedPages.indexOf(pageB);
+            });
+            
+            // Re-append sorted items
+            navItems.forEach(item => navContainer.appendChild(item));
+        }
+
+        // Update active navigation item
+        function updateActiveNavItem(page) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-page') === page) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Toggle profile dropdown
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close profile dropdown
+        function closeProfileDropdown() {
+            document.getElementById('profileDropdown').classList.remove('show');
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const menu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.toggle('active');
+            overlay.classList.toggle('show');
+            menu.classList.toggle('show');
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const menu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.remove('active');
+            overlay.classList.remove('show');
+            menu.classList.remove('show');
+        }
+
+        // Page navigation functions
+        function showNotifications() {
+            alert('Notifications page - Coming soon!');
+        }
+
+        function showDigest() {
+            alert('Daily Digest page - Coming soon!');
+        }
+
+        function showBudget() {
+            alert('Budget Overview page - Coming soon!');
+        }
+
+        function showProfile() {
+            alert('Profile page - Coming soon!');
+        }
+
+        function showSettings() {
+            alert('Settings page - Coming soon!');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                showHero();
+                closeMobileMenu();
+                closeProfileDropdown();
+            }
+        }
+
         // Initialize - hide footer navigation on splash screen
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('bottom-nav').style.display = 'none';
+            document.getElementById('smartNav').style.display = 'none';
         });
         
         // Entry Flow Functions
@@ -1768,6 +2336,7 @@
             document.getElementById('heroScreen').style.display = 'flex';
             document.getElementById('authSelection').classList.remove('show');
             document.getElementById('dashboard').classList.remove('show');
+            document.getElementById('smartNav').style.display = 'none';
             updateNavActive('hero');
         }
 
@@ -1782,6 +2351,7 @@
             document.getElementById('heroScreen').style.display = 'none';
             document.getElementById('authSelection').classList.remove('show');
             document.getElementById('dashboard').classList.add('show');
+            document.getElementById('smartNav').style.display = 'flex';
             updateNavActive('dashboard');
         }
 
