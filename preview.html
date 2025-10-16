@@ -702,7 +702,7 @@
             width: 375px;
             background: white;
             border-top: 1px solid #E2E8F0;
-            display: flex;
+            display: none; /* Hidden by default */
             justify-content: space-around;
             padding: 12px 0;
             box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
@@ -762,6 +762,11 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+        }
+        
+        /* Hide navigation during entry flow */
+        .entry-container .bottom-nav {
+            display: none !important;
         }
 
         .splash-screen {
