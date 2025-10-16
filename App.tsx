@@ -8,6 +8,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import AppNavigator from '@/navigation/AppNavigator';
 
 import { theme } from '@/utils/theme';
+import ChatWidget from '@/components/ChatWidget';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <PaperProvider theme={theme}>
           <AuthProvider>
             <AppNavigator />
+            <ChatWidget />
             <StatusBar style="auto" />
           </AuthProvider>
         </PaperProvider>

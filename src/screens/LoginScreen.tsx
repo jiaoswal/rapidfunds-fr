@@ -87,7 +87,7 @@ const LoginScreen: React.FC = () => {
             Welcome Back
           </Text>
           <Text style={[styles.description, { color: theme.colors.onSurfaceVariant }]}>
-            Sign in to your Rapid Funds account
+            Sign in to your FundFlow account
           </Text>
 
           {/* Form */}
